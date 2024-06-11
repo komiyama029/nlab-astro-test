@@ -1,0 +1,21 @@
+---
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+
+const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/research`);
+const posts = await response.json();
+---
+
+<DefaultLayout>
+  <h1>記事一覧</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li key={post.id}>
+          <a href={`/research/articles/${post.id}`}>
+            <h2>{post.title.rendered}</h2>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</DefaultLayout>

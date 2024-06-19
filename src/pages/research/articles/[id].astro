@@ -5,7 +5,7 @@ import NotFound from "@/pages/404.astro";
 const { id } = Astro.params;
 const getPost = async () => {
   try {
-    const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/research/${id}`);
+    const response = await fetch(`${import.meta.env.PUBLIC_BASE_URL}/api/research/${id}`);
     const data = await response.json();
 
     if (data.code === "rest_post_invalid_id" && data.data.status === 404) {
